@@ -1,11 +1,19 @@
 package com.example.coursereeksamen.course;
 
 import com.example.coursereeksamen.ICRUD;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
 
+@Service
 public class CourseService implements ICRUDCourse {
+
+    private ICourseRepository iCourseRepository;
+
+    public CourseService(ICourseRepository iCourseRepository) {
+        this.iCourseRepository = iCourseRepository;
+    }
 
     @Override
     public Set<Course> findAll() {
@@ -14,7 +22,7 @@ public class CourseService implements ICRUDCourse {
 
     @Override
     public Course save(Course object) {
-        return null;
+        return iCourseRepository.save(object);
     }
 
     @Override
